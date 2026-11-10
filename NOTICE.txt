@@ -1,0 +1,8 @@
+Required Notice: Copyright (c) 2026 mrxh (https://github.com/2006dusk/X-WORLD)
+
+Terms: https://polyformproject.org/licenses/noncommercial/1.0.0
+The full license text is in the LICENSE file next to this notice.
+
+Commercial use is not granted by that license. Use for a commercial purpose
+requires a separate written license from the licensor.
+Commercial licensing contact: mrxh (https://github.com/2006dusk)

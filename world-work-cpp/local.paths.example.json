@@ -1,0 +1,6 @@
+{
+  "llamacpp_dir": "D:\\path\\to\\llamacpp",
+  "vcvars": "C:\\path\\to\\vs\\vcvars64.bat",
+  "cuda_bin": "C:\\path\\to\\cuda\\bin",
+  "model": "D:\\path\\to\\model.gguf"
+}

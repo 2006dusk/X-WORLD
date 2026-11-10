@@ -1,0 +1,49 @@
+# 依赖与构建产物
+node_modules/
+dist/
+build/
+*.tsbuildinfo
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# 自写推理服务端的编译产物与运行时 DLL（含 1GB 级 CUDA 库）
+world-work-cpp/build/
+
+# 探针与中间产物
+backend/tmp/
+backend/.probe_data/
+tmp/
+scratch/
+*.log
+*.out
+*.err
+
+# 文档、研究资料、原始数据、第三方快照、角色卡：只留本机，不随仓库分发
+# 仓库只装源代码：任何 .md 说明文档都不入库
+# 文档在仓库外的同级目录 ../docs
+*.md
+
+# 角色卡与世界书正文：只留本机，不入库
+# 提示词对照表、角色语气语料、世界书条目与角色卡核对脚本都含角色卡内容
+world-work-cpp/tools/prompts_pair.json
+world-work-cpp/tools/modern_persona.json
+world-work-cpp/tools/style_persona.json
+world-work-cpp/tools/modern_neutral.json
+world-work-cpp/tools/style_neutral.json
+backend/tools/apply_worldbooks.py
+backend/tools/verify_worldbooks.py
+
+# 用户数据（会话、世界状态、向量都落在数据根，不进仓库）
+*.f32
+*.bin
+!world-work-cpp/**/*.f32
+
+# 本机路径与凭据
+world-work-cpp/local.paths.json
+.env
+.env.*
+*.local

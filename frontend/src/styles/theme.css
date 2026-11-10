@@ -1,0 +1,151 @@
+/* X-WORLD 主题层：SillyTavern 经典深色。
+ * 全部语义化变量集中于此，组件只引用变量，不直接写颜色值。
+ */
+
+:root {
+  /* 背景层级：0 最底，2 最高 */
+  --bg-0: #0d0f14;
+  --bg-1: #14171f;
+  --bg-2: #1c2029;
+
+  --border: #2a2f3a;
+
+  /* 文字层级：1 主，3 最弱 */
+  --text-1: #e6e9ef;
+  --text-2: #9aa3b2;
+  --text-3: #5d6675;
+
+  /* 主强调色：低饱和蓝，用于当前激活项与主按钮 */
+  --accent: #4f8cc9;
+
+  /* 状态色 */
+  --level-danger: #c94f4f;
+  --level-warn: #c9a44f;
+  --level-ok: #4fc96e;
+
+  /* 派生量 */
+  --accent-soft: rgba(79, 140, 201, 0.16);
+  --danger-soft: rgba(201, 79, 79, 0.14);
+  --warn-soft: rgba(201, 164, 79, 0.14);
+  --ok-soft: rgba(79, 201, 110, 0.14);
+  --radius: 6px;
+  --radius-lg: 10px;
+  --sidebar-w: 264px;
+  --detail-w: 320px;
+  --font-mono: 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+  /* 动作、场景与对白用不同字体区分：前两者是叙事，衬线体；对白是角色说话，楷体 */
+  --font-scene: 'Songti SC', 'Noto Serif SC', 'Source Han Serif SC', 'SimSun', serif;
+  --font-dialogue: 'KaiTi', 'STKaiti', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+  /* 上下文窗口分段色板：七档蓝，分类按用量从多到少配色 */
+  --ctx-1: #4f8cc9;
+  --ctx-2: #5f9ed6;
+  --ctx-3: #6fafdf;
+  --ctx-4: #7fb9e4;
+  --ctx-5: #8fc2e8;
+  --ctx-6: #9fcbec;
+  --ctx-7: #b0d4ef;
+  /* 分支树几何：每层缩进、点在行内的位置。卡片与节点组件共用一套 */
+  --tree-indent: 14px;
+  --tree-dot-x: 8.5px;
+
+  /* 应用整体高度：默认跟随视口；窄屏用动态视口高度，地址栏收放不跳动。
+   * App.vue 在软键盘弹出时用可视视口的实测高度覆盖它，输入区不被遮住。
+   * 浮层、弹窗的最大高度也按它算，键盘弹出时不会被顶出可视区。 */
+  --app-h: 100vh;
+  /* 可视视口顶部偏移：页面被键盘顶起来时，壳跟着往下挪一点。 */
+  --app-top: 0px;
+}
+
+@supports (height: 100dvh) {
+  :root {
+    --app-h: 100dvh;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: var(--app-h);
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-0);
+  color: var(--text-1);
+  font-family:
+    'Segoe UI',
+    'Microsoft YaHei',
+    system-ui,
+    sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+  color: var(--text-1);
+  background: var(--bg-0);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px 8px;
+  outline: none;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  /* 壳固定在可视视口里：软键盘弹出时输入区落在键盘上方，不被遮住。
+   * 高度由 App.vue 写入 --app-h，偏移写入 --app-top。 */
+  #app {
+    position: fixed;
+    top: var(--app-top);
+    left: 0;
+    right: 0;
+    height: var(--app-h);
+  }
+
+  /* 窄屏：触控目标不小于 40px。
+   * 复选框与单选框保持原尺寸，它们由旁边的文字标签带着点；
+   * 分支树的节点是图上的坐标点，尺寸由布局算法决定，不参与这条规则。 */
+  button:not(.node),
+  input:not([type='checkbox']):not([type='radio']),
+  select,
+  textarea {
+    min-height: 40px;
+  }
+  button:not(.node) {
+    min-width: 40px;
+  }
+}
