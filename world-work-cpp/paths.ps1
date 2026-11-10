@@ -1,6 +1,6 @@
 # Resolve machine-local paths for the build scripts.
 # Order: script parameter, then environment variable, then local.paths.json
-# next to the scripts. The repository carries no machine path.
+# at the repository root. The repository carries no machine path.
 function Resolve-LocalPath {
     param(
         [Parameter(Mandatory = $true)][string]$Key,

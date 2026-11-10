@@ -24,9 +24,11 @@ sys.path.insert(0, str(BACKEND_ROOT))
 
 from bench_local import HOST, free_port, wait_gpu_free  # noqa: E402
 from wwc_server import start_server, stop_server, wait_ready  # noqa: E402
+from local_paths import model_file  # noqa: E402
+
 
 SWEEP_DIR = BACKEND_ROOT.parent.parent / "docs" / "实践情况" / "data" / "sweep"
-JUDGE_MODEL = r"D:\models\qwen3.5-4b\Qwen3.5-4B-UD-Q4_K_XL.gguf"
+JUDGE_MODEL = model_file("local/qwen3.5-4b/Qwen3.5-4B-UD-Q4_K_XL.gguf")
 JUDGE_NAME = "Qwen3.5-4B-UD-Q4_K_XL"
 JUDGE_ARGS = ["--ctx-size", "8192", "--n-gpu-layers", "999"]
 

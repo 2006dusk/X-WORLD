@@ -24,6 +24,8 @@ if str(TOOLS_DIR) not in sys.path:
 
 # 推理端只有自写服务端一套，起停与命令行拼装都交给公共模块。
 from wwc_server import start_server, stop_server  # noqa: E402
+from local_paths import model_file  # noqa: E402
+
 
 HOST = "127.0.0.1"
 
@@ -57,13 +59,13 @@ LONG_PROMPT = {"system": RP_SYSTEM, "user": RP_CONTEXT_LONG + "\n" + RP_USER}
 CASES = [
     {
         "name": "lumi_q4",
-        "model": r"E:\X-WORLD\models\ms\lumi_q4.gguf",
+        "model": model_file("ms/lumi_q4.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "999"],
         "note": "全显存，f16 KV 缓存",
     },
     {
         "name": "qwen2.5-14b-roleplay-zh_q4_k_m",
-        "model": r"E:\X-WORLD\models\hf\qwen2.5-14b-roleplay-zh-q4_k_m.gguf",
+        "model": model_file("hf/qwen2.5-14b-roleplay-zh-q4_k_m.gguf"),
         "args": [
             "--ctx-size", "4096",
             "--n-gpu-layers", "36",
@@ -74,7 +76,7 @@ CASES = [
     },
     {
         "name": "qwen2.5-14b-roleplay-zh_q4_k_m",
-        "model": r"E:\X-WORLD\models\hf\qwen2.5-14b-roleplay-zh-q4_k_m.gguf",
+        "model": model_file("hf/qwen2.5-14b-roleplay-zh-q4_k_m.gguf"),
         "args": [
             "--ctx-size", "8192",
             "--n-gpu-layers", "36",
@@ -85,26 +87,26 @@ CASES = [
     },
     {
         "name": "qwen2.5-14b-roleplay-zh_q4_k_m",
-        "model": r"E:\X-WORLD\models\hf\qwen2.5-14b-roleplay-zh-q4_k_m.gguf",
+        "model": model_file("hf/qwen2.5-14b-roleplay-zh-q4_k_m.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "0"],
         "note": "纯 CPU 回退，基准下限",
     },
     # 候选模型：不指定模板，自写服务端固定用权重自带的对话模板。
     {
         "name": "ArityFlow-Qwen3-4B-RolePlay",
-        "model": r"E:\X-WORLD\models\hf\ArityFlow-Qwen3-4B-Instruct-2507-RolePlay.Q5_K_M.gguf",
+        "model": model_file("hf/ArityFlow-Qwen3-4B-Instruct-2507-RolePlay.Q5_K_M.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "999"],
         "note": "候选交互档，全显存，自带对话模板",
     },
     {
         "name": "Tifa-7B-Qwen2-v0.1",
-        "model": r"E:\X-WORLD\models\hf\tifa-7b-qwen2-v0.1.q4_k_m.gguf",
+        "model": model_file("hf/tifa-7b-qwen2-v0.1.q4_k_m.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "999"],
         "note": "候选均衡档，全显存，自带对话模板",
     },
     {
         "name": "NQLSG-Qwen2.5-14B-MegaFusion-v5-roleplay",
-        "model": r"E:\X-WORLD\models\hf\NQLSG-Qwen2.5-14B-MegaFusion-v5-roleplay.i1-Q4_K_M.gguf",
+        "model": model_file("hf/NQLSG-Qwen2.5-14B-MegaFusion-v5-roleplay.i1-Q4_K_M.gguf"),
         "args": ["--ctx-size", "8192", "--n-gpu-layers", "36", "--cache-type-k", "q8_0", "--cache-type-v", "q8_0"],
         "note": "候选长上下文档，36 层卸载，自带对话模板",
     },
@@ -114,55 +116,55 @@ CASES = [
 BENCH_CASES = [
     {
         "name": "arityflow-4b_q5_km",
-        "model": r"E:\X-WORLD\models\hf\ArityFlow-Qwen3-4B-Instruct-2507-RolePlay.Q5_K_M.gguf",
+        "model": model_file("hf/ArityFlow-Qwen3-4B-Instruct-2507-RolePlay.Q5_K_M.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "999"],
         "note": "当前默认档",
     },
     {
         "name": "qwen3_5-9b_ud",
-        "model": r"D:\models\qwen3.5-9b\Qwen3.5-9B-UD-Q4_K_XL.gguf",
+        "model": model_file("local/qwen3.5-9b/Qwen3.5-9B-UD-Q4_K_XL.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "999"],
         "note": "名单候选，九档 Q4",
     },
     {
         "name": "qwen3_5-9b_q6_k",
-        "model": r"D:\models\qwen3.5-9b\Qwen3.5-9B-Q6_K.gguf",
+        "model": model_file("local/qwen3.5-9b/Qwen3.5-9B-Q6_K.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "999", "--cache-type-k", "q8_0", "--cache-type-v", "q8_0"],
         "note": "名单候选，九档 Q6_K",
     },
     {
         "name": "qwen3_5-2b_ud",
-        "model": r"D:\models\qwen3.5-2b\Qwen3.5-2B-UD-Q4_K_XL.gguf",
+        "model": model_file("local/qwen3.5-2b/Qwen3.5-2B-UD-Q4_K_XL.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "999"],
         "note": "轻量档",
     },
     {
         "name": "qwen3_5-0.8b_ud",
-        "model": r"D:\models\qwen3.5-0.8b\Qwen3.5-0.8B-UD-Q4_K_XL.gguf",
+        "model": model_file("local/qwen3.5-0.8b/Qwen3.5-0.8B-UD-Q4_K_XL.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "999"],
         "note": "极小档下限参照",
     },
     {
         "name": "qwen2-7b-multilingual-rp_q6_k",
-        "model": r"E:\X-WORLD\models\hf\Qwen2-7B-Multilingual-RP.Q6_K.gguf",
+        "model": model_file("hf/Qwen2-7B-Multilingual-RP.Q6_K.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "999"],
         "note": "名单候选：多语言角色扮演高精量化",
     },
     {
         "name": "aura_v2_7b_iq3_m",
-        "model": r"E:\X-WORLD\models\hf\Aura_v2_7B-IQ3_M-imat.gguf",
+        "model": model_file("hf/Aura_v2_7B-IQ3_M-imat.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "999"],
         "note": "名单候选：Uncensored 低比特档",
     },
     {
         "name": "arli-rpmax-12b_q3_km",
-        "model": r"E:\X-WORLD\models\hf\ArliAI-RPMax-12B-v1.1-Q3_K_M.gguf",
+        "model": model_file("hf/ArliAI-RPMax-12B-v1.1-Q3_K_M.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "999", "--cache-type-k", "q8_0", "--cache-type-v", "q8_0"],
         "note": "名单候选：Mistral Nemo 12B 低比特档",
     },
     {
         "name": "gemma4-e4b-minifantasy_q4_km",
-        "model": r"E:\X-WORLD\models\hf\Gemma4-E4B-MiniFantasy-V1.Q4_K_M.gguf",
+        "model": model_file("hf/Gemma4-E4B-MiniFantasy-V1.Q4_K_M.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "999"],
         "note": "名单候选：Gemma4 混合专家小显存档",
     },

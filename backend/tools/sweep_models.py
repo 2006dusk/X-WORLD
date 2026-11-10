@@ -29,9 +29,11 @@ sys.path.insert(0, str(BACKEND_ROOT))
 from bench_local import CASES, HOST, LONG_PROMPT, SHORT_PROMPT, free_port, wait_gpu_free  # noqa: E402
 from bench_local_final import measure, measure_ttft  # noqa: E402
 from wwc_server import start_server, stop_server, wait_ready  # noqa: E402
+from local_paths import local_path, model_file  # noqa: E402
+
 
 OUT_DIR = BACKEND_ROOT.parent.parent / "docs" / "实践情况" / "data" / "sweep"
-MODELS_DIR = Path(r"E:\X-WORLD\models\hf")
+MODELS_DIR = Path(local_path("models_hf_dir"))
 
 # 两档提示词。P1 是默认 RP 行为：模型自己决定写多长。
 # P2 显式要求长回合，用来分辨「写不出长文」与「默认写短」。
@@ -74,7 +76,7 @@ MAX_TOKENS = 900
 SWEEP_CASES: list[dict[str, object]] = [
     {
         "name": "lumi_q4_km",
-        "model": r"E:\X-WORLD\models\ms\lumi_q4.gguf",
+        "model": model_file("ms/lumi_q4.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "999"],
         "params": "6.9B",
         "quant": "Q4_K_M",
@@ -82,7 +84,7 @@ SWEEP_CASES: list[dict[str, object]] = [
     },
     {
         "name": "qwen2.5-14b-roleplay-zh_q4_km",
-        "model": r"E:\X-WORLD\models\hf\qwen2.5-14b-roleplay-zh-q4_k_m.gguf",
+        "model": model_file("hf/qwen2.5-14b-roleplay-zh-q4_k_m.gguf"),
         "args": ["--ctx-size", "8192", "--n-gpu-layers", "36", "--cache-type-k", "q8_0", "--cache-type-v", "q8_0"],
         "params": "14B",
         "quant": "Q4_K_M",
@@ -226,7 +228,7 @@ SWEEP_CASES: list[dict[str, object]] = [
     },
     {
         "name": "qwen3_5-2b_ud",
-        "model": r"D:\models\qwen3.5-2b\Qwen3.5-2B-UD-Q4_K_XL.gguf",
+        "model": model_file("local/qwen3.5-2b/Qwen3.5-2B-UD-Q4_K_XL.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "999"],
         "params": "2B",
         "quant": "Q4_K_XL",
@@ -234,7 +236,7 @@ SWEEP_CASES: list[dict[str, object]] = [
     },
     {
         "name": "qwen3_5-4b_ud",
-        "model": r"D:\models\qwen3.5-4b\Qwen3.5-4B-UD-Q4_K_XL.gguf",
+        "model": model_file("local/qwen3.5-4b/Qwen3.5-4B-UD-Q4_K_XL.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "999"],
         "params": "4B",
         "quant": "Q4_K_XL",
@@ -242,7 +244,7 @@ SWEEP_CASES: list[dict[str, object]] = [
     },
     {
         "name": "qwen3_5-9b_ud",
-        "model": r"D:\models\qwen3.5-9b\Qwen3.5-9B-UD-Q4_K_XL.gguf",
+        "model": model_file("local/qwen3.5-9b/Qwen3.5-9B-UD-Q4_K_XL.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "999"],
         "params": "9B",
         "quant": "Q4_K_XL",
@@ -258,7 +260,7 @@ SWEEP_CASES: list[dict[str, object]] = [
     },
     {
         "name": "qwen3_5-9b_q6_k",
-        "model": r"D:\models\qwen3.5-9b\Qwen3.5-9B-Q6_K.gguf",
+        "model": model_file("local/qwen3.5-9b/Qwen3.5-9B-Q6_K.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "999", "--cache-type-k", "q8_0", "--cache-type-v", "q8_0"],
         "params": "9B",
         "quant": "Q6_K",
@@ -266,7 +268,7 @@ SWEEP_CASES: list[dict[str, object]] = [
     },
     {
         "name": "qwen3_5-0.8b_ud",
-        "model": r"D:\models\qwen3.5-0.8b\Qwen3.5-0.8B-UD-Q4_K_XL.gguf",
+        "model": model_file("local/qwen3.5-0.8b/Qwen3.5-0.8B-UD-Q4_K_XL.gguf"),
         "args": ["--ctx-size", "4096", "--n-gpu-layers", "999"],
         "params": "0.8B",
         "quant": "Q4_K_XL",

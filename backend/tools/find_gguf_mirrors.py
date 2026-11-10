@@ -4,7 +4,7 @@
 再用 gguf_meta 的远程核实取架构、训练上下文、许可与各量化档体积，供下载前定档。
 
 用法：
-    F:/python/python.exe backend/tools/find_gguf_mirrors.py Chun121/Qwen3-4B-RPG-Roleplay-V2
+    python backend/tools/find_gguf_mirrors.py Chun121/Qwen3-4B-RPG-Roleplay-V2
 """
 
 from __future__ import annotations

@@ -8,7 +8,7 @@
 要求本地 llama.cpp 兼容服务已在 127.0.0.1:8080 启动。
 
 用法：
-    F:/python/python.exe backend/tools/verify_builtin_multiturn.py
+    python backend/tools/verify_builtin_multiturn.py
 """
 
 from __future__ import annotations

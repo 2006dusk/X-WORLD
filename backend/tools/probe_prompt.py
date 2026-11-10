@@ -16,8 +16,10 @@ sys.path.insert(0, str(TOOLS_DIR))
 
 from bench_local import HOST, free_port  # noqa: E402
 from wwc_server import start_server, stop_server, wait_ready  # noqa: E402
+from local_paths import model_file  # noqa: E402
 
-MODEL = r"E:\X-WORLD\models\hf\qwen2.5-14b-roleplay-zh-q4_k_m.gguf"
+
+MODEL = model_file("hf/qwen2.5-14b-roleplay-zh-q4_k_m.gguf")
 ARGS = ["--ctx-size", "8192", "--n-gpu-layers", "36", "--cache-type-k", "q8_0", "--cache-type-v", "q8_0"]
 
 ROLE = "你扮演角色K，在地址N经营地址U的调音师，沉默、观察力强。回复保持角色一致，不解释设定，不提及自己是 AI。用中文写作。"

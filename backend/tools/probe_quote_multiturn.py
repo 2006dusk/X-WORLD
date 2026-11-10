@@ -4,7 +4,7 @@
 本脚本对几种写法各跑两轮，第二轮带上第一轮自己的输出，比较中英文引号数量。
 
 用法：
-    F:/python/python.exe backend/tools/probe_quote_multiturn.py
+    python backend/tools/probe_quote_multiturn.py
 """
 
 from __future__ import annotations

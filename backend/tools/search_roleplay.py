@@ -8,7 +8,7 @@
 再用仓库名与标签里的规格标记筛出候选仓。参数量由仓库元数据另行核对。
 
 用法：
-    F:/python/python.exe backend/tools/search_roleplay.py --min-b 4.5 --max-b 7.0
+    python backend/tools/search_roleplay.py --min-b 4.5 --max-b 7.0
 """
 
 from __future__ import annotations

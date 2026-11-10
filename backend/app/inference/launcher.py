@@ -276,7 +276,7 @@ def detect_running(model_path: Path) -> tuple[int, int] | None:
             continue
         if not servers.is_inference_command(command):
             continue
-        if model_path.name in command:
+        if model_path.name and model_path.name in command:
             return port, pid
     return None
 
@@ -454,6 +454,11 @@ def start(profile_id: str, replace: bool = True) -> dict[str, Any]:
     而本机放不下第二个实例，硬起第二个的结果是「服务被杀又起不来」。
     """
     profile = profile_by_id(profile_id)
+    if not profile.model_path:
+        raise FileNotFoundError(
+            f"档位 {profile.id} 的权重路径未配置："
+            "在 local.paths.json 里填 models_local_dir 与 models_hf_dir"
+        )
     model_path = Path(profile.model_path)
     if not model_path.exists():
         raise FileNotFoundError(f"权重文件不存在：{profile.model_path}")
@@ -563,13 +568,14 @@ def _tier_row(profile: ModelProfile) -> dict[str, Any]:
     """档位的一行展示数据。"""
     service = _SERVICES.get(profile.id)
     model_path = Path(profile.model_path)
+    exists = bool(profile.model_path) and model_path.exists()
     return {
         "profile_id": profile.id,
         "name": profile.name,
         "model_path": profile.model_path,
         "model_file": model_path.name,
-        "model_exists": model_path.exists(),
-        "size_mb": round(model_path.stat().st_size / 1048576) if model_path.exists() else None,
+        "model_exists": exists,
+        "size_mb": round(model_path.stat().st_size / 1048576) if exists else None,
         "n_ctx": profile.n_ctx,
         "kv_type": profile.kv_type,
         "n_gpu_layers": profile.n_gpu_layers,

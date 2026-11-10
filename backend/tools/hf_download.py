@@ -25,9 +25,17 @@ import time
 from pathlib import Path
 
 import httpx
+TOOLS_DIR = Path(__file__).resolve().parent
+
+if str(TOOLS_DIR) not in sys.path:
+
+    sys.path.insert(0, str(TOOLS_DIR))
+
+from local_paths import local_path  # noqa: E402
+
 
 MIRRORS = ["https://hf-mirror.com", "https://huggingface.co"]
-DEFAULT_DIR = Path(r"E:\X-WORLD\models\hf")
+DEFAULT_DIR = Path(local_path("models_hf_dir"))
 CHUNK = 1 << 20
 
 

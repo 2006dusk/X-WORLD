@@ -17,7 +17,7 @@ v3 测：
 
 每个变体跑两个种子，指标取两轮平均。
 
-跑法：F:/python/python.exe backend/tools/probe_paren_v3.py
+跑法：python backend/tools/probe_paren_v3.py
 只打印到终端，不落新的持久化数据表，也不写会话流水。
 
 对照的是内置预设 v23 的提示文本（本轮改动前的生产状态）。替换锚点

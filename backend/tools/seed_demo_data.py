@@ -14,6 +14,16 @@ import os
 import sys
 
 import httpx
+from pathlib import Path
+
+TOOLS_DIR = Path(__file__).resolve().parent
+
+if str(TOOLS_DIR) not in sys.path:
+
+    sys.path.insert(0, str(TOOLS_DIR))
+
+from local_paths import model_file  # noqa: E402
+
 
 BASE = os.environ.get("XW_BACKEND", "http://127.0.0.1:8760")
 
@@ -76,8 +86,7 @@ PROFILE = {
     "name": "默认档（ArityFlow 4B Q5_K_M）",
     "params": {
         "model_path": (
-            "E:\\X-WORLD\\models\\hf\\"
-            "ArityFlow-Qwen3-4B-Instruct-2507-RolePlay.Q5_K_M.gguf"
+            model_file("hf/ArityFlow-Qwen3-4B-Instruct-2507-RolePlay.Q5_K_M.gguf")
         ),
         "n_ctx": 4096,
         "n_gpu_layers": 999,

@@ -5,8 +5,8 @@
 页面也不该出现横向滚动。
 
 用法：
-    F:/python/python.exe backend/tools/capture_ui.py --widths 360,412,1280
-    F:/python/python.exe backend/tools/capture_ui.py --url http://127.0.0.1:8760/ --out tmp
+    python backend/tools/capture_ui.py --widths 360,412,1280
+    python backend/tools/capture_ui.py --url http://127.0.0.1:8760/ --out tmp
 
 只用系统已装的 Edge，不另外下载浏览器。
 """

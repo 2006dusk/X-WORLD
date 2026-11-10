@@ -7,7 +7,7 @@
 裁判沿用 judge_local 的评分量表与机械校正，便于与 judge.json 横向比较。
 
 用法：
-    F:\\python\\python.exe tools\\probe_variance.py [配置名子串 ...] [--seeds N]
+    python tools\\probe_variance.py [配置名子串 ...] [--seeds N]
 """
 
 from __future__ import annotations

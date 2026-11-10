@@ -13,7 +13,7 @@ v4 的两处改动让口径更接近生产：
   S1_floor60  对白字数下限 100 字改 60 字
   S2_short    系统提示加一句：台词不超过两三句，不复述上一轮的威胁与叮嘱
 
-跑法：F:/python/python.exe backend/tools/probe_paren_v4.py
+跑法：python backend/tools/probe_paren_v4.py
 只打印到终端，不落新的持久化数据表，也不写会话流水。
 """
 

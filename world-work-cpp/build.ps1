@@ -1,7 +1,8 @@
 # Build world-work-cpp: a self-written llama.cpp compatible inference server.
 #
 # The server links against the llama.cpp b11753 CUDA DLLs. Their location comes
-# from local.paths.json (or the XWORLD_LLAMACPP_DIR environment variable). No
+# from local.paths.json at the repository root (or the XWORLD_LLAMACPP_DIR
+# environment variable). No
 # llama.cpp source is vendored here: only the public headers are used.
 #
 # Steps
@@ -26,7 +27,7 @@ $ErrorActionPreference = 'Stop'
 $ROOT      = Split-Path -Parent $MyInvocation.MyCommand.Path
 $SRC       = Join-Path $ROOT 'src'
 $OUT       = Join-Path $ROOT 'build'
-$LOCALJSON = Join-Path $ROOT 'local.paths.json'
+$LOCALJSON = Join-Path (Split-Path -Parent $ROOT) 'local.paths.json'
 . (Join-Path $ROOT 'paths.ps1')
 
 $NATIVE   = Resolve-LocalPath 'llamacpp_dir' 'XWORLD_LLAMACPP_DIR' $Native $LOCALJSON

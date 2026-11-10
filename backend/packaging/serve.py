@@ -8,11 +8,11 @@
 后端重启时按端口认领回来，权重不用重载。
 
 用法：
-  F:/python/python.exe backend/packaging/serve.py start
-  F:/python/python.exe backend/packaging/serve.py status
-  F:/python/python.exe backend/packaging/serve.py stop
-  F:/python/python.exe backend/packaging/serve.py stop --with-inference
-  F:/python/python.exe backend/packaging/serve.py restart
+  python backend/packaging/serve.py start
+  python backend/packaging/serve.py status
+  python backend/packaging/serve.py stop
+  python backend/packaging/serve.py stop --with-inference
+  python backend/packaging/serve.py restart
 
 只动本机进程，不写系统配置，不注册计划任务。
 """

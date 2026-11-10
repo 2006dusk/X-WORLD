@@ -9,7 +9,7 @@
 单轮结果说明不了问题。
 
 用法：
-  F:/python/python.exe backend/tools/probe_paren_action.py run --reps 4
+  python backend/tools/probe_paren_action.py run --reps 4
 
 只打印到终端，不落新的持久化数据表。跑完自动删掉临时角色卡与临时会话。
 """

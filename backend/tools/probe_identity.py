@@ -13,8 +13,8 @@
 全程只动自己造的东西，收尾删干净。
 
 跑法：
-  F:/python/python.exe backend/tools/probe_identity.py run
-  F:/python/python.exe backend/tools/probe_identity.py cleanup
+  python backend/tools/probe_identity.py run
+  python backend/tools/probe_identity.py cleanup
 
 只打印到终端，不落新的持久化数据表。
 """

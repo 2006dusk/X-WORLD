@@ -22,6 +22,10 @@ sys.path.insert(0, BACKEND)
 import httpx  # noqa: E402
 
 from app.inference.repetition import split_sentences  # noqa: E402
+from pathlib import Path
+
+from local_paths import model_file  # noqa: E402
+
 
 BASE = os.environ.get("XW_BACKEND", "http://127.0.0.1:8760")
 
@@ -34,8 +38,7 @@ PROMPTS = [
 
 BASE_PARAMS = {
     "model_path": (
-        "E:\\X-WORLD\\models\\hf\\"
-        "ArityFlow-Qwen3-4B-Instruct-2507-RolePlay.Q5_K_M.gguf"
+        model_file("hf/ArityFlow-Qwen3-4B-Instruct-2507-RolePlay.Q5_K_M.gguf")
     ),
     "n_ctx": 4096,
     "n_gpu_layers": 999,

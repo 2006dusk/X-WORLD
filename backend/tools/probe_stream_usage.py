@@ -20,8 +20,10 @@ sys.path.insert(0, str(BACKEND_ROOT))
 
 from bench_local import HOST, free_port, wait_gpu_free  # noqa: E402
 from multi_turn import start_server, stop_server, wait_ready  # noqa: E402
+from local_paths import model_file  # noqa: E402
 
-MODEL = r"E:\X-WORLD\models\hf\ArityFlow-Qwen3-4B-Instruct-2507-RolePlay.Q5_K_M.gguf"
+
+MODEL = model_file("hf/ArityFlow-Qwen3-4B-Instruct-2507-RolePlay.Q5_K_M.gguf")
 ARGS = ["--ctx-size", "4096", "--n-gpu-layers", "999"]
 
 

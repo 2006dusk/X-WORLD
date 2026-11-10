@@ -8,9 +8,9 @@
 3. 监督器与发起它的终端无关：监督器的父进程没了它照样活着。
 
 用法（在工程根目录或 backend 目录下都能跑）：
-    F:/python/python.exe backend/tools/verify_persistence.py --scenario backend
-    F:/python/python.exe backend/tools/verify_persistence.py --scenario inference
-    F:/python/python.exe backend/tools/verify_persistence.py --scenario all
+    python backend/tools/verify_persistence.py --scenario backend
+    python backend/tools/verify_persistence.py --scenario inference
+    python backend/tools/verify_persistence.py --scenario all
 
 只动本机进程，不写数据目录里的任何表。
 """

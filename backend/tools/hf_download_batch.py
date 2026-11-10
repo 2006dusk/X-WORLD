@@ -15,6 +15,14 @@ import subprocess
 import sys
 import time
 from pathlib import Path
+TOOLS_DIR = Path(__file__).resolve().parent
+
+if str(TOOLS_DIR) not in sys.path:
+
+    sys.path.insert(0, str(TOOLS_DIR))
+
+from local_paths import local_path  # noqa: E402
+
 
 ROOT = Path(__file__).resolve().parents[2]
 TOOLS = ROOT / "backend" / "tools"
@@ -26,22 +34,22 @@ BATCH = [
     (
         "mradermacher/Qwen2-7B-Multilingual-RP-GGUF",
         "Qwen2-7B-Multilingual-RP.Q6_K.gguf",
-        r"E:\X-WORLD\models\hf",
+        local_path("models_hf_dir"),
     ),
     (
         "Lewdiculous/Aura_v2_7B-GGUF-IQ-Imatrix",
         "Aura_v2_7B-IQ3_M-imat.gguf",
-        r"E:\X-WORLD\models\hf",
+        local_path("models_hf_dir"),
     ),
     (
         "ArliAI/Mistral-Nemo-12B-ArliAI-RPMax-v1.1-GGUF",
         "ArliAI-RPMax-12B-v1.1-Q3_K_M.gguf",
-        r"E:\X-WORLD\models\hf",
+        local_path("models_hf_dir"),
     ),
     (
         "mradermacher/Gemma4-E4B-MiniFantasy-V1-GGUF",
         "Gemma4-E4B-MiniFantasy-V1.Q4_K_M.gguf",
-        r"E:\X-WORLD\models\hf",
+        local_path("models_hf_dir"),
     ),
 ]
 

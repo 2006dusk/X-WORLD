@@ -26,6 +26,12 @@ import time
 import urllib.error
 import urllib.request
 from pathlib import Path
+TOOLS_DIR = Path(__file__).resolve().parent
+
+if str(TOOLS_DIR) not in sys.path:
+
+    sys.path.insert(0, str(TOOLS_DIR))
+
 
 BACKEND = Path(__file__).resolve().parents[1]
 ROOT = Path(__file__).resolve().parents[2]
@@ -83,7 +89,7 @@ def restart_backend() -> None:
     )
     time.sleep(2)
     subprocess.Popen(
-        ["F:\\python\\python.exe", "packaging\\launcher.py"],
+        [sys.executable, "packaging\\launcher.py"],
         cwd=str(BACKEND),
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
@@ -134,7 +140,7 @@ def run_group(key: str) -> dict:
     env["XW_OUT"] = out_name
     env["PYTHONIOENCODING"] = "utf-8"
     proc = subprocess.run(
-        ["F:\\python\\python.exe", str(PROBE)],
+        [sys.executable, str(PROBE)],
         cwd=str(ROOT),
         env=env,
         capture_output=True,

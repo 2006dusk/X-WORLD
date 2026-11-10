@@ -14,9 +14,9 @@ from pathlib import Path
 APP_DIR = Path(__file__).resolve().parent.parent / "app"
 ROUTER_DIR = APP_DIR / "routers"
 
-# 模型权重按设计放在模型库目录，不在数据目录内，路径由模型档案声明。
-# 该模块是盘符路径的唯一例外。
-DRIVE_LETTER_ALLOWLIST = {"inference/traits.py"}
+# 模型权重按设计放在模型库目录，不在数据目录内，路径由 local.paths.json 声明。
+# 盘符路径只出现在那份配置里，模块代码一律不写死。
+DRIVE_LETTER_ALLOWLIST: set[str] = set()
 
 DRIVE_LETTER = "hardcoded drive letter"
 BARE_EXCEPT = "bare except"

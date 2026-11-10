@@ -11,8 +11,8 @@ r"""剧情走查探针：每张角色卡真机走六个回合。
 逐轮发用户输入。全程只动自己造的东西，cleanup 子命令删干净。
 
 跑法：
-  F:/python/python.exe backend/tools/probe_story_run.py run
-  F:/python/python.exe backend/tools/probe_story_run.py cleanup
+  python backend/tools/probe_story_run.py run
+  python backend/tools/probe_story_run.py cleanup
 
 只打印到终端，不落新的持久化数据表。
 """

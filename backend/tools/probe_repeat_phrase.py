@@ -4,7 +4,7 @@ r"""标定：相邻两轮对白共享的六字片段有多少。
 判据：新一轮对白里出现了上一轮对白的整段六字以上片段，就是同义复读。
 先看真实会话里正常轮次的分布，再定阈值。
 
-跑法：F:/python/python.exe backend/tools/probe_repeat_phrase.py
+跑法：python backend/tools/probe_repeat_phrase.py
 只读，不落盘，不写会话流水。
 """
 

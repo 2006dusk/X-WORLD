@@ -21,6 +21,8 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass, field
 from typing import Any
 
+from app.paths import model_file
+
 # 只用自写服务端 world-work-cpp。Python 版 llama_cpp.server 的支持已经去掉：
 # 它没有控制向量、原地换模型与运行时声线生成这三样能力，
 # 留着只会让人以为「换个服务端也行」。
@@ -75,7 +77,7 @@ DEFAULT_PROFILES: tuple[ModelProfile, ...] = (
     ModelProfile(
         id="quality",
         name="质量档",
-        model_path=r"D:\models\qwen3.5-9b\Qwen3.5-9B-UD-Q4_K_XL.gguf",
+        model_path=model_file("local/qwen3.5-9b/Qwen3.5-9B-UD-Q4_K_XL.gguf"),
         n_ctx=16384,
         n_gpu_layers=999,
         kv_type="q8_0",
@@ -97,7 +99,7 @@ DEFAULT_PROFILES: tuple[ModelProfile, ...] = (
     ModelProfile(
         id="fast",
         name="高速档",
-        model_path=r"D:\models\qwen3.5-2b\Qwen3.5-2B-UD-Q4_K_XL.gguf",
+        model_path=model_file("local/qwen3.5-2b/Qwen3.5-2B-UD-Q4_K_XL.gguf"),
         n_ctx=16384,
         n_gpu_layers=999,
         kv_type="f16",
@@ -118,7 +120,7 @@ DEFAULT_PROFILES: tuple[ModelProfile, ...] = (
     ModelProfile(
         id="interaction",
         name="轻量档",
-        model_path=r"E:\X-WORLD\models\hf\ArityFlow-Qwen3-4B-Instruct-2507-RolePlay.Q5_K_M.gguf",
+        model_path=model_file("hf/ArityFlow-Qwen3-4B-Instruct-2507-RolePlay.Q5_K_M.gguf"),
         n_ctx=16384,
         n_gpu_layers=999,
         kv_type="f16",

@@ -44,6 +44,8 @@ from app.assembly import pipeline  # noqa: E402
 from app.contracts import ChatMessage, ChatRequest, XwOptions  # noqa: E402
 from app.inference.structure import split_blocks  # noqa: E402
 from app.state import parse_state_block, render_state_block  # noqa: E402
+from local_paths import model_file  # noqa: E402
+
 
 INFERENCE = os.environ.get("XW_INFERENCE", "http://127.0.0.1:8080")
 CHARACTER = "c_demo"
@@ -357,7 +359,7 @@ def main() -> int:
     global CONVO, EXPECT
     model = sys.argv[2] if len(sys.argv) > 2 else os.environ.get(
         "XW_MODEL",
-        r"E:\X-WORLD\models\hf\ArityFlow-Qwen3-4B-Instruct-2507-RolePlay.Q5_K_M.gguf",
+        model_file("hf/ArityFlow-Qwen3-4B-Instruct-2507-RolePlay.Q5_K_M.gguf"),
     )
     use_ctx = os.environ.get("XW_CONVO", "") == "ctx"
     if use_ctx:

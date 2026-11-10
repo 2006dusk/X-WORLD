@@ -19,7 +19,7 @@ r"""括号即剧情：回合写法对照探针 v2。
   act_overlap  相邻两轮动作四字重合率（模型照抄上一轮动作的迹象）
   gate         生产角色归属闸门对这轮的判定
 
-跑法：F:/python/python.exe backend/tools/probe_paren_v2.py
+跑法：python backend/tools/probe_paren_v2.py
 只打印到终端，不落新的持久化数据表，也不写会话流水。
 
 对照的是内置预设 v23 的提示文本（本轮改动前的生产状态）。替换锚点

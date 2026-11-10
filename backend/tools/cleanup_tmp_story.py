@@ -5,7 +5,7 @@
 这些残留并删干净，只删探针自己建的。
 
 用法：
-  F:/python/python.exe backend/tools/cleanup_tmp_story.py
+  python backend/tools/cleanup_tmp_story.py
 """
 
 import json

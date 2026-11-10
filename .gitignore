@@ -43,7 +43,7 @@ backend/tools/verify_worldbooks.py
 !world-work-cpp/**/*.f32
 
 # 本机路径与凭据
-world-work-cpp/local.paths.json
+/local.paths.json
 .env
 .env.*
 *.local

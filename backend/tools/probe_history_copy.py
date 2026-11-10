@@ -40,11 +40,13 @@ from app import store  # noqa: E402
 from app.assembly import pipeline  # noqa: E402
 from app.contracts import ChatMessage, ChatRequest, XwOptions  # noqa: E402
 from app.inference.structure import split_blocks  # noqa: E402
+from local_paths import model_file  # noqa: E402
+
 
 INFERENCE = os.environ.get("XW_INFERENCE", "http://127.0.0.1:8080")
 MODEL = os.environ.get(
     "XW_MODEL",
-    r"E:\X-WORLD\models\hf\ArityFlow-Qwen3-4B-Instruct-2507-RolePlay.Q5_K_M.gguf",
+    model_file("hf/ArityFlow-Qwen3-4B-Instruct-2507-RolePlay.Q5_K_M.gguf"),
 )
 CHARACTER = "c_demo"
 PRESET = "p_builtin_rp"

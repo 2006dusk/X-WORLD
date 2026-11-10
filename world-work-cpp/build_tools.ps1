@@ -19,7 +19,7 @@ $ErrorActionPreference = 'Stop'
 $ROOT      = Split-Path -Parent $MyInvocation.MyCommand.Path
 $TOOLS     = Join-Path $ROOT 'tools'
 $OUT       = Join-Path $ROOT 'build'
-$LOCALJSON = Join-Path $ROOT 'local.paths.json'
+$LOCALJSON = Join-Path (Split-Path -Parent $ROOT) 'local.paths.json'
 . (Join-Path $ROOT 'paths.ps1')
 
 $NATIVE = Resolve-LocalPath 'llamacpp_dir' 'XWORLD_LLAMACPP_DIR' $Native $LOCALJSON

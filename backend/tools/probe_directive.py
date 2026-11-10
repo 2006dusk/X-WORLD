@@ -4,7 +4,7 @@
 本脚本对同一段场景尝试几种写法，比较中英文引号与字数，供内置预设定稿。
 
 用法：
-    F:/python/python.exe backend/tools/probe_directive.py
+    python backend/tools/probe_directive.py
 """
 
 from __future__ import annotations

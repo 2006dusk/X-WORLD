@@ -141,7 +141,7 @@ async def start_inference(request: Request) -> dict:
 async def switch_inference_model(request: Request) -> dict:
     """在运行的推理服务里原地换模型。
 
-    请求体：{"profile_id": "fast"}，也可直接给 {"model_path": "D:\\...\\x.gguf"}。
+    请求体：{"profile_id": "fast"}，也可直接给 {"model_path": "<权重文件的绝对路径>"}。
 
     推理端只有自写服务端一套，原地重载权重，不重启进程。
     """

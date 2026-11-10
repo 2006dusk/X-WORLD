@@ -10,9 +10,9 @@ r"""括号即剧情：真实链路复验探针。
 只动自己造的东西：cleanup 子命令删掉临时会话与临时角色卡。
 
 跑法：
-  F:/python/python.exe backend/tools/probe_paren_e2e.py seed
-  F:/python/python.exe backend/tools/probe_paren_e2e.py run --card <id> --session <id>
-  F:/python/python.exe backend/tools/probe_paren_e2e.py cleanup --card <id> --session <id>
+  python backend/tools/probe_paren_e2e.py seed
+  python backend/tools/probe_paren_e2e.py run --card <id> --session <id>
+  python backend/tools/probe_paren_e2e.py cleanup --card <id> --session <id>
 """
 
 from __future__ import annotations

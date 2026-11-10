@@ -7,7 +7,7 @@
 就说明这个参数真的进了采样链；文本没变就说明它被忽略了。
 
 跑法：
-  F:/python/python.exe backend/tools/probe_sampling_params.py
+  python backend/tools/probe_sampling_params.py
 
 只打印到终端，不落持久化数据。
 """
