@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -28,14 +29,24 @@ MODEL_DIR_KEYS = {
 }
 
 
-def local_paths_file() -> Path | None:
-    """给出 local.paths.json 的位置，文件不存在时给 None。"""
+def _candidates() -> list[Path]:
+    """local.paths.json 的查找顺序：环境变量指定、仓库根、可执行文件同级目录。"""
     override = os.environ.get(LOCAL_PATHS_ENV, "").strip()
     if override:
-        path = Path(override).expanduser()
-        return path if path.is_file() else None
-    candidate = REPO_ROOT / LOCAL_PATHS_FILE
-    return candidate if candidate.is_file() else None
+        return [Path(override).expanduser()]
+    candidates = [REPO_ROOT / LOCAL_PATHS_FILE]
+    exe_dir = Path(sys.executable).resolve().parent
+    if exe_dir not in {REPO_ROOT, Path.cwd()}:
+        candidates.append(exe_dir / LOCAL_PATHS_FILE)
+    return candidates
+
+
+def local_paths_file() -> Path | None:
+    """给出 local.paths.json 的位置，文件不存在时给 None。"""
+    for candidate in _candidates():
+        if candidate.is_file():
+            return candidate
+    return None
 
 
 def _entries() -> dict[str, str]:
